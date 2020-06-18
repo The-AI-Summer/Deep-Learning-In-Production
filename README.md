@@ -19,6 +19,7 @@ If you want to be notified for our next post, you can subscribe to our newslette
 
 ## Articles:
 
-1. Laptop set up and system design  : https://theaisummer.com/deep-learning-production/
+1. [Laptop set up and system design](https://theaisummer.com/deep-learning-production/)
+2. [Best practices to write Deep Learning code: Project structure, OOP, Type checking and documentation](https://theaisummer.com/best-practices-deep-learning-code/)
 
 
