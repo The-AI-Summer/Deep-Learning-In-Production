@@ -3,17 +3,21 @@
 
 # standard library
 
-# internal
-from .base_model import BaseModel
-from dataloader.dataloader import DataLoader
-
 # external
 import tensorflow as tf
 from tensorflow_examples.models.pix2pix import pix2pix
 
+from dataloader.dataloader import DataLoader
+from utils.logger import get_logger
+# internal
+from .base_model import BaseModel
+
+LOG = get_logger('unet')
+
 
 class UNet(BaseModel):
     """Unet Model Class"""
+
     def __init__(self, config):
         super().__init__(config)
         self.base_model = tf.keras.applications.MobileNetV2(input_shape=self.config.model.input, include_top=False)
@@ -36,18 +40,10 @@ class UNet(BaseModel):
 
     def load_data(self):
         """Loads and Preprocess data """
+        LOG.info(f'Loading {self.config.data.path} dataset...')
         self.dataset, self.info = DataLoader().load_data(self.config.data)
-        self._preprocess_data()
-
-    def _preprocess_data(self):
-        """ Splits into training and test and set training parameters"""
-        train = self.dataset['train'].map(self._load_image_train, num_parallel_calls=tf.data.experimental.AUTOTUNE)
-        test = self.dataset['test'].map(self._load_image_test)
-
-        self.train_dataset = train.cache().shuffle(self.buffer_size).batch(self.batch_size).repeat()
-        self.train_dataset = self.train_dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
-        self.test_dataset = test.batch(self.batch_size)
-
+        self.train_dataset, self.test_dataset = DataLoader.preprocess_data(self.dataset, self.batch_size,
+                                                                           self.buffer_size, self.image_size)
         self._set_training_parameters()
 
     def _set_training_parameters(self):
@@ -55,44 +51,6 @@ class UNet(BaseModel):
         self.train_length = self.info.splits['train'].num_examples
         self.steps_per_epoch = self.train_length // self.batch_size
         self.validation_steps = self.info.splits['test'].num_examples // self.batch_size // self.val_subsplits
-
-    def _normalize(self, input_image, input_mask):
-        """ Normalise input image
-        Args:
-            input_image (tf.image): The input image
-            input_mask (int): The image mask
-
-        Returns:
-            input_image (tf.image): The normalized input image
-            input_mask (int): The new image mask
-        """
-        input_image = tf.cast(input_image, tf.float32) / 255.0
-        input_mask -= 1
-        return input_image, input_mask
-
-    @tf.function
-    def _load_image_train(self, datapoint):
-        """ Loads and preprocess  a single training image """
-        input_image = tf.image.resize(datapoint['image'], (self.image_size, self.image_size))
-        input_mask = tf.image.resize(datapoint['segmentation_mask'], (self.image_size, self.image_size))
-
-        if tf.random.uniform(()) > 0.5:
-            input_image = tf.image.flip_left_right(input_image)
-            input_mask = tf.image.flip_left_right(input_mask)
-
-        input_image, input_mask = self._normalize(input_image, input_mask)
-
-        return input_image, input_mask
-
-    def _load_image_test(self, datapoint):
-        """ Loads and preprocess a single test images"""
-
-        input_image = tf.image.resize(datapoint['image'], (self.image_size, self.image_size))
-        input_mask = tf.image.resize(datapoint['segmentation_mask'], (self.image_size, self.image_size))
-
-        input_image, input_mask = self._normalize(input_image, input_mask)
-
-        return input_image, input_mask
 
     def build(self):
         """ Builds the Keras model based """
@@ -140,11 +98,15 @@ class UNet(BaseModel):
 
         self.model = tf.keras.Model(inputs=inputs, outputs=x)
 
+        LOG.info('Keras Model was built successfully')
+
     def train(self):
         """Compiles and trains the model"""
         self.model.compile(optimizer=self.config.train.optimizer.type,
                            loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                            metrics=self.config.train.metrics)
+
+        LOG.info('Training started')
 
         model_history = self.model.fit(self.train_dataset, epochs=self.epoches,
                                        steps_per_epoch=self.steps_per_epoch,
@@ -155,50 +117,16 @@ class UNet(BaseModel):
 
     def evaluate(self):
         """Predicts resuts for the test dataset"""
+
         predictions = []
-        for image, mask in self.dataset.take(1):
+        LOG.info(f'Predicting segmentation map for test dataset')
+
+        for im in self.test_dataset.as_numpy_iterator():
+            DataLoader().validate_schema(im[0])
+            break
+
+        for image, mask in self.test_dataset:
+            tf.print(image)
+            # LOG.info(f'Predicting segmentation map {image}')
             predictions.append(self.model.predict(image))
-
         return predictions
-
-
-    def distributed_train(self):
-        mirrored_strategy = tf.distribute.MirroredStrategy(devices=["/gpu:0", "/gpu:1"])
-        with mirrored_strategy.scope():
-            self.model = tf.keras.Model(inputs=inputs, outputs=x)
-            self.model.compile(...)
-            self.model.fit(...)
-
-
-        os.environ["TF_CONFIG"] = json.dumps(
-            {
-                "cluster":{
-                    "worker": ["host1:port", "host2:port", "host3:port"]
-                },
-                "task":{
-                     "type": "worker",
-                     "index": 1
-                }
-            }
-        )
-
-        multi_worker_mirrored_strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
-        with multi_worker_mirrored_strategy.scope():
-            self.model = tf.keras.Model(inputs=inputs, outputs=x)
-            self.model.compile(...)
-            self.model.fit(...)
-
-        parameter_server_strategy = tf.distribute.experimental.ParameterServerStrategy()
-
-        os.environ["TF_CONFIG"] = json.dumps(
-            {
-                "cluster": {
-                    "worker": ["host1:port", "host2:port", "host3:port"],
-                    "ps":  ["host4:port", "host5:port"]
-                },
-                "task": {
-                    "type": "worker",
-                    "index": 1
-                }
-            }
-        )
