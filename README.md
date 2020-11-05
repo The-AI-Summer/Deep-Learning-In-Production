@@ -25,4 +25,5 @@ If you want to be notified for our next post, you can subscribe to our newslette
 4. [Logging and Debugging in Machine Learning](https://theaisummer.com/logging-debugging/)
 5. [Data preprocessing for deep learning](https://theaisummer.com/data-preprocessing/)
 6. [Data preprocessing for deep learning (part2)](https://theaisummer.com/data-processing-optimization/)
-
+7. [How to build a custom production-ready Deep Learning Training loop in Tensorflow from scratch](https://theaisummer.com/tensorflow-training-loop/)
+8. [Deploy a Deep Learning model as a web application using Flask and Tensorflow](https://theaisummer.com/deploy-flask-tensorflow/)
