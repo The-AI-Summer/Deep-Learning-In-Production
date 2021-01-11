@@ -33,4 +33,4 @@ If you want to be notified for our future posts, subscribe to our [Newsletter](h
 12. [Introduction to Kubernetes with Google Cloud: Deploy your Deep Learning model effortlessly](https://theaisummer.com/kubernetes/)
 
 ## Support
-If you like our effort, don't forget to star th project :) It matters!
+If you like our effort, don't forget to star the project :) It matters!
