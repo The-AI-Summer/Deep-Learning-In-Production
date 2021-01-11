@@ -14,7 +14,7 @@ But that’s not all of it. Afterwards, we need to scale our server to be able t
 
 In this repo, you can find the full code provided in every article. Note that the code for each lesson is selft contained and can be run independently.
 
-If you want to be notified for our future posts, subscribe to our [Newsletter](https://theaisummer.com/newsletter/)
+If you want to be notified for our future posts, subscribe to our [Newsletter](https://theaisummer.com/newsletter/) or visit our [software articles](https://theaisummer.com/topics/software/).
 
 
 ## Articles:
