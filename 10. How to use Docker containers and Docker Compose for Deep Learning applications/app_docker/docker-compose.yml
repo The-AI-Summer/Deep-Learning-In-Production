@@ -1,0 +1,17 @@
+version : "3.7"
+
+services:
+
+  app:
+    build: ./app
+    container_name: deep-learning-production
+    restart: always
+    expose:
+      - 660
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
