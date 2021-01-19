@@ -28,7 +28,7 @@ If you want to be notified for our future posts, subscribe to our [Newsletter](h
 7. [How to build a custom production-ready Deep Learning Training loop in Tensorflow from scratch](https://theaisummer.com/tensorflow-training-loop/)
 8. [Deploy a Deep Learning model as a web application using Flask and Tensorflow](https://theaisummer.com/deploy-flask-tensorflow/)
 9. [How to use uWSGI and Nginx to serve a Deep Learning model](https://theaisummer.com/uwsgi-nginx/)
-10.[How to use Docker containers and Docker Compose for Deep Learning applications](https://theaisummer.com/docker/)
+10. [How to use Docker containers and Docker Compose for Deep Learning applications](https://theaisummer.com/docker/)
 11. [Scalability in Machine Learning: Grow your model to serve millions of users](https://theaisummer.com/scalability/)
 12. [Introduction to Kubernetes with Google Cloud: Deploy your Deep Learning model effortlessly](https://theaisummer.com/kubernetes/)
 
