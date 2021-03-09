@@ -21,7 +21,7 @@ If you want to be notified for our future posts, subscribe to our [Newsletter](h
 
 1. Laptop set up and system design: https://theaisummer.com/deep-learning-production/
 2. Best practices to write Deep Learning code: Project structure, OOP, Type checking and documentation: https://theaisummer.com/best-practices-deep-learning-code/
-3. How to Unit Test Deep Learning: Tests in TensorFlow, mocking and test coverage: https://theaisummer.com/best-practices-deep-learning-code/unit-test-deep-learning/
+3. How to Unit Test Deep Learning: Tests in TensorFlow, mocking and test coverage: https://theaisummer.com/unit-test-deep-learning/
 4. Logging and Debugging in Machine Learning: https://theaisummer.com/logging-debugging/
 5. Data preprocessing for deep learning: https://theaisummer.com/data-preprocessing/
 6. Data preprocessing for deep learning (part2): https://theaisummer.com/data-processing-optimization/
