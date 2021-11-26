@@ -52,7 +52,7 @@ The books is based on an article series published in our blog "AI Summer" and th
 12. How to use Docker containers and Docker Compose for Deep Learning applications: https://theaisummer.com/docker/
 13. Scalability in Machine Learning: Grow your model to serve millions of users: https://theaisummer.com/scalability/
 14. Introduction to Kubernetes with Google Cloud: Deploy your Deep Learning model effortlessly: https://theaisummer.com/kubernetes/
-Github: https://github.com/The-AI-Summer/Deep-Learning-In-Production 
+
 
 ## Support
 If you like our effort, don't forget to star the project :) It matters!
