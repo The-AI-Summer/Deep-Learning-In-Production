@@ -34,7 +34,22 @@ This book accumulates a set of best practices and approaches on how to build rob
 
 It's an excellent choice for researchers with a minimal software background, software engineers with little experience in machine learning, or aspiring machine learning engineers.
 
-## Articles:
+## More details and a free sample
+
+[Visit the book's page](https://theaisummer.com/deep-learning-in-production-book/)
+
+## Table of Contents
+1. Designing a machine learning system
+2. Setting up a Deep Learning Workstation
+3. Writing and Structuring Deep Learning Code
+4. Data Processing
+5. Training
+6. Serving
+7. Deploying
+8. Scaling
+9. Building an End-to-End Pipeline
+
+## Articles
 
 The books is based on an article series published in our blog "AI Summer" and they were later combined and organized into a single resource. Some were rewritten from scratch; some were modified to fit the book's structure. Plus, we added completely new material!
 
