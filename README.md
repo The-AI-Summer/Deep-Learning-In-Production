@@ -1,23 +1,42 @@
-# Deep Learning In Production Course
+# Deep Learning In Production Book
 
-In this article series, our goal is dead simple. We are gonna start with a colab notebook containing prototype deep learning code (i.e. a research project) and we’re gonna deploy and scale it to serve millions or billions (ok maybe I’m overexcited) of users.
+### **You can know grab a copy of the book from here:**
+  - **Amazon**: [Paperback and Kindle](https://www.amazon.com/Deep-Learning-Production-Sergios-Karagiannakos-dp-6180033773/dp/6180033773/)
+  - **Leanpub**: [Epub and Pdf](https://leanpub.com/DLProd)
 
-We will incrementally explore the following concepts and ideas:
+#### Build, train, deploy, scale and maintain deep learning models. Understand ML infrastructure and MLOps using hands-on examples.
 
-- How to structure and develop production-ready machine learning code,
+**What you will learn?**
 
-- How to optimize the model’s performance and memory requirements, and
+- Best practices to write Deep Learning code
+- How to unit test and debug Machine Learning code
+- How to build and deploy efficient data pipelines
+- How to serve Deep Learning models
+- How to deploy and scale your application
+- What is MLOps and how to build end-to-end pipelines
 
-- How to make it available to the public by setting up a small server on the cloud.
+**Who is this book for?**
 
-But that’s not all of it. Afterwards, we need to scale our server to be able to handle the traffic as the userbase grows and grows.
+- Software engineers who are starting out with deep learning
+- Machine learning researchers with limited software engineering background
+- Machine learning engineers who seek to strengthen their knowledge
+- Data scientists who want to productionize their models and build customer-facing applications
 
-In this repo, you can find the full code provided in every article. Note that the code for each lesson is selft contained and can be run independently.
+**What tools you will use?**
 
-If you want to be notified for our future posts, subscribe to our [Newsletter](https://theaisummer.com/newsletter/) or visit our [software articles](https://theaisummer.com/topics/software/).
+Tensorflow, Flask, uWSGI, Nginx, Docker, Kubernetes, Tensorflow Extended, Google Cloud, Vertex AI
 
+**Book description**
+
+Deep Learning research is advancing rapidly over the past years. Frameworks and libraries are constantly been developed and updated. However, we still lack standardized solutions on how to serve, deploy and scale Deep Learning models. Deep Learning infrastructure is not very mature yet.
+
+This book accumulates a set of best practices and approaches on how to build robust and scalable machine learning applications. It covers the entire lifecycle from data processing and training to deployment and maintenance. It will help you understand how to transfer methodologies that are generally accepted and applied in the software community, into Deep Learning projects.
+
+It's an excellent choice for researchers with a minimal software background, software engineers with little experience in machine learning, or aspiring machine learning engineers.
 
 ## Articles:
+
+The books is based on an article series published in our blog "AI Summer" and they were later combined and organized into a single resource. Some were rewritten from scratch; some were modified to fit the book's structure. Plus, we added completely new material!
 
 1. Laptop set up and system design: https://theaisummer.com/deep-learning-production/
 2. Best practices to write Deep Learning code: Project structure, OOP, Type checking and documentation: https://theaisummer.com/best-practices-deep-learning-code/
