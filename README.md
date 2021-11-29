@@ -1,7 +1,7 @@
 # Deep Learning In Production Book
 
 ### **You can know grab a copy of the book from here:**
-  - **Amazon**: [Paperback and Kindle](https://www.amazon.com/Deep-Learning-Production-Sergios-Karagiannakos-dp-6180033773/dp/6180033773/)
+  - **Amazon**: [Paperback and Kindle](https://amzn.to/3oa50Vj)
   - **Leanpub**: [Epub and Pdf](https://leanpub.com/DLProd)
 
 #### Build, train, deploy, scale and maintain deep learning models. Understand ML infrastructure and MLOps using hands-on examples.
